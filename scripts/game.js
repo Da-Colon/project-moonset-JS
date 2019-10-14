@@ -1,37 +1,21 @@
-const config = {
-    type: Phaser.AUTO,
-    width: 620,
-    height: 700,
-    parent: "moonset-div",
-    input: {
-        gamepad: true
-    },
+var config = {
+    type: Phaser.WEBGL,
+    width: 480,
+    height: 640,
+    backgroundColor: "black",
     physics: {
-        default: 'arcade',
+        default: "arcade",
         arcade: {
-            debug: false
+            gravity: { x: 0, y: 0 }
         }
     },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update,
-        extend: {
-            player: null,
-            healthpoints: null,
-            reticle: null,
-            moveKeys: null,
-            playerBullets: null,
-            enemyBullets: null,
-            time: 0,
-        }
-    }
+    scene: [
+        SceneMainMenu,
+        SceneMain,
+        SceneGameOver
+    ],
+    pixelArt: true,
+    roundPixels: true
 };
 
-const game = new Phaser.Game(config);
-
-function preload() {};
-
-function create() {};
-
-function update() {};
+var game = new Phaser.Game(config);
